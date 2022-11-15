@@ -1,0 +1,66 @@
+body{
+	margin:0;
+	padding:0;
+    background-color: rgb(222, 238, 251);
+}
+.container{
+    max-width: 1140px;
+    margin: auto;
+}
+.float-left{
+    float: left !important;
+}
+.float-right{
+    float: right !important;
+}
+
+.margin-auto{
+    margin: auto;
+}
+.card{
+    width:60% !important;
+    height: 50vh;
+    margin-top: 25vh;
+    display: flex;
+}
+.innercard{
+ width: 50%;
+ box-shadow: 0px 0px 7px;
+ background-color: rgb(231, 192, 255);
+}
+img{
+    width: 100%;
+    height: 100%
+}
+form{
+    width: 90%;
+    margin: auto;
+}
+input{
+    border-radius: 5px;
+    margin-top: 3px;
+    margin-bottom: 5px;
+    width: 100%;
+    border: 2px solid;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.button{
+    background-color: rgb(76, 172, 76);
+    border: none !important;
+    margin-left: 8px;
+    padding: 8px!important;
+    cursor:pointer
+}
+
+p{
+	width:100%;
+	color: red;
+	text-align:center;
+	margin-bottom: 1px;
+}
+label{
+	width:100%;
+	height:50px;
+}

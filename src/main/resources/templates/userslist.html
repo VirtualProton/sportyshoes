@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xml:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportyShoes-Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="nav-custom shadow position-fixed top-0 border bg-darkblue">
+            <div class="navbar  container-xl">
+                <button class="btn btn-outline-light fw-bold border-2"
+                    onclick="location.href='http://localhost:8080/dashboard'">Home</button>
+                <h2 class="text-white">Users List</h2>
+                <button class="btn btn-outline-light fw-bold border-2"
+                    onclick="location.href='http://localhost:8080/'">Logout</button>
+            </div>
+        </div>
+        <div class="container-xl navbar mt-5 mb-1 pt-5" style="z-index: 1;">
+            <form action="" class="input-group mb-3" style="width: 20% !important;">
+                <input class="form-control" type="text" name="keyword" id="txtSearch" placeholder="Search...">
+          
+            </form>
+        </div>
+        <div class="container-xl">
+            <table class="border table text-center ">
+                <thead class="table-light">
+                    <th> ID</th>
+                    <th>Full Name</th>
+                    <th>Phone Number</th>
+                    <th>Email ID</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </thead>
+                <tbody id="userTable">
+                    <tr th:each="user: ${users}">
+                        <td th:text="${user.id}">a</td>
+                        <td th:text="${user.fullName}">ab</td>
+                        <td th:text="${user.phoneNumber}">abcd</td>
+                        <td th:text="${user.emailId}">abcde</td>
+                        <td th:text="${user.address}">abcdef</td>
+                        <td>
+                            <button class="btn btn-danger ml-2"
+                            	th:onclick="|location.href='/userdelete?id='+${user.id}|">Delete</button>
+                        </td>
+                    </tr>
+         
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+
+        var users = /*[[${users}]]*/ 'default';
+        console.log(users);
+
+        /*]]>*/
+
+
+        $('#txtSearch').on('keyup', function () {
+            var value = $(this).val();
+
+            var data = FilterFunction(value, users);
+
+            rebuildTable(data)
+        })
+
+        function FilterFunction(value, data) {
+            var filteredData = [];
+            for (var i = 0; i < data.length; i++) {
+                value = value.toLowerCase();
+                var fullName = data[i].fullName.toLowerCase();
+                var emailId = data[i].emailId.toLowerCase();
+                var phoneNumber = data[i].phoneNumber;
+
+                if (fullName.includes(value) || emailId.includes(value) || phoneNumber.includes(value)) {
+                    filteredData.push(data[i]);
+                }
+            }
+            return filteredData;
+        }
+
+        function rebuildTable(data) {
+            var table = document.getElementById('userTable');
+            table.innerHTML = ''
+            for (var i = 0; i < data.length; i++) {
+                var row = `<tr>
+                            <td>${data[i].id}</td>
+                            <td>${data[i].fullName}</td>
+                            <td>${data[i].phoneNumber}</td>
+                            <td>${data[i].emailId}</td>
+                            <td>${data[i].address}</td>
+                            <td><button class="btn btn-danger ml-2" onclick ="|location.href='/userdelete?id='+data[i].id|">Delete</button></td>
+                    </tr>`
+                table.innerHTML += row
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+body{
+    background-color: azure;
+}
+.container{
+    max-width: 1140px;
+    height: 100vh;
+    
+    margin: auto;
+    display: flex;
+}
+
+.card{
+    margin: auto;
+    
+    border-radius: 5px;
+    width: 250px;
+    height: 100px;
+    text-align: center;
+    background-color: rgb(97, 199, 97);
+    cursor: pointer;
+}
+.card:hover{
+    box-shadow: 0px 0px 7px;
+}
+.card p{
+    margin-top: 15%;
+    color: azure;
+    font-weight: bold;
+}

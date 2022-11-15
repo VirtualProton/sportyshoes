@@ -1,0 +1,26 @@
+body{
+    margin: 0px;
+    padding-top:0;
+}
+.bg-darkblue{
+    background-color: darkblue;
+}
+
+.nav-custom{ 
+    margin-top: -1px;
+    margin-left: -1px;
+    width: 100.5%;
+}
+.card-custom{
+	height: 120px;
+}
+.cursor-pointer{
+	cursor: pointer;
+}
+
+.shadow-hover:hover{
+	box-shadow: 2px 10px 18px #888888;
+}
+.search{
+	max-width:300px !important ;
+}
